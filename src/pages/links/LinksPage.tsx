@@ -229,7 +229,7 @@ export const LinksPage = () => {
                 <SelectGroup>
                   <SelectLabel>Folders</SelectLabel>
                   <SelectItem value="all">All Folders</SelectItem>
-                  <SelectItem value="">No Folder</SelectItem>
+                  <SelectItem value="no-folder">No Folder</SelectItem>
                   {folders.map((folder) => (
                     <SelectItem key={folder.id} value={folder.id}>
                       {folder.name}
