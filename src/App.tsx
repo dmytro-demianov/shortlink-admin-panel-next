@@ -14,7 +14,14 @@ import { CreateLinkPage } from "./pages/links/CreateLinkPage";
 import { FoldersPage } from "./pages/folders/FoldersPage";
 import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1, // Only retry once
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -29,7 +36,7 @@ const App = () => (
             <Route path="/register" element={<RegisterPage />} />
             
             {/* Protected Routes */}
-            <Route path="/" element={<AppLayout><Dashboard /></AppLayout>} />
+            <Route path="/dashboard" element={<AppLayout><Dashboard /></AppLayout>} />
             <Route path="/links" element={<AppLayout><LinksPage /></AppLayout>} />
             <Route path="/links/create" element={<AppLayout><CreateLinkPage /></AppLayout>} />
             <Route path="/folders" element={<AppLayout><FoldersPage /></AppLayout>} />

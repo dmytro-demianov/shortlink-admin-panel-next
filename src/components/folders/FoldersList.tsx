@@ -11,6 +11,7 @@ import {
 import { FolderActions } from "./FolderActions";
 import { Folder } from "@/types";
 import { EditFolderDialog } from "./EditFolderDialog";
+import { toast } from "sonner";
 
 interface FoldersListProps {
   folders: Folder[];
@@ -19,6 +20,16 @@ interface FoldersListProps {
 
 export const FoldersList = ({ folders, onFolderUpdated }: FoldersListProps) => {
   const [folderToEdit, setFolderToEdit] = useState<Folder | null>(null);
+  
+  const countLinksInFolder = (folderId: string) => {
+    // This is a mock implementation - in a real app, this would come from the API
+    return Math.floor(Math.random() * 10);
+  };
+  
+  const handleError = (error: any) => {
+    console.error("Error in FoldersList:", error);
+    toast.error("An error occurred while performing this action");
+  };
   
   return (
     <>
@@ -39,8 +50,7 @@ export const FoldersList = ({ folders, onFolderUpdated }: FoldersListProps) => {
                 {new Date(folder.createdAt).toLocaleDateString()}
               </TableCell>
               <TableCell>
-                {/* This would need to be implemented with an actual count from the API */}
-                {Math.floor(Math.random() * 10)} links
+                {countLinksInFolder(folder.id)} links
               </TableCell>
               <TableCell className="text-right">
                 <FolderActions 
