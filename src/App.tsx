@@ -12,6 +12,7 @@ import { Dashboard } from "./pages/Dashboard";
 import { LinksPage } from "./pages/links/LinksPage";
 import { CreateLinkPage } from "./pages/links/CreateLinkPage";
 import { FoldersPage } from "./pages/folders/FoldersPage";
+import { TagsPage } from "./pages/tags/TagsPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient({
@@ -40,6 +41,7 @@ const App = () => (
             <Route path="/links" element={<AppLayout><LinksPage /></AppLayout>} />
             <Route path="/links/create" element={<AppLayout><CreateLinkPage /></AppLayout>} />
             <Route path="/folders" element={<AppLayout><FoldersPage /></AppLayout>} />
+            <Route path="/tags" element={<AppLayout><TagsPage /></AppLayout>} />
             
             {/* Redirect root to dashboard */}
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
